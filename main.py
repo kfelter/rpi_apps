@@ -26,15 +26,15 @@ sense.show_message(apps[i].name, text_colour = (255, 0, 0))
 while True:
     for event in sense.stick.get_events():
         if event.action == "pressed":
-            if event.direction == "up" and i < len(apps):
+            if event.direction == "down" and i < len(apps):
                 i = i + 1
 
-            if event.direction == "down" and i > 0:
+            if event.direction == "up" and i > 0:
                 i = i - 1
                 
             if event.direction == "middle":
                 subprocess.call(['python3 {0}'.format(apps[i].absolute())], shell=True)
 
     sense.clear()
-    sense.show_message(apps[i].name, text_colour = (0, 0, 255))
+    sense.show_message(apps[i].name, text_colour = (0, 255, 0))
 
