@@ -22,7 +22,7 @@ sense = sense_hat.SenseHat()
 
 i = 0
 sense.clear()
-sense.show_message(apps[i].name, text_colour = (0, 255, 0))
+sense.show_message(apps[i].name, text_colour = (0, 255, 0), scroll_speed=0.2)
 while True:
     for event in sense.stick.get_events():
         if event.action == "pressed":
@@ -33,8 +33,9 @@ while True:
                 i = i - 1
                 
             if event.direction == "middle":
-                subprocess.call(['python3 {0}'.format(apps[i].absolute())], shell=True)
+                subprocess.call(['python3 {0} &'.format(apps[i].absolute())], shell=True)
+                sys.exit()
 
     sense.clear()
-    sense.show_message(apps[i].name, text_colour = (0, 255, 0))
+    sense.show_message(apps[i].name, text_colour = (0, 255, 0), scroll_speed=0.2)
 
