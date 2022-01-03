@@ -22,7 +22,7 @@ sense = sense_hat.SenseHat()
 
 i = 0
 sense.clear()
-sense.show_message(apps[i].name, text_colour = (255, 0, 0))
+sense.show_message(apps[i].name, text_colour = (0, 255, 0))
 while True:
     for event in sense.stick.get_events():
         if event.action == "pressed":
