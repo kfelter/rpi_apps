@@ -1,6 +1,12 @@
-import pathlib, subprocess, sense_hat
+import pathlib, subprocess, sense_hat, getopt, sys
 
-p = pathlib.Path('.')
+proj_path = '.'
+opts, args = getopt.getopt(sys.argv, 'hp')
+for opt, arg in opts:
+    if opt == '-p':
+        proj_path = arg
+
+p = pathlib.Path(proj_path)
 
 # run all files
 deamons = list(p.glob('deamon/*.py'))
@@ -29,6 +35,6 @@ while True:
             if event.direction == "middle":
                 subprocess.call(['python3 {0}'.format(apps[i].absolute())], shell=True)
 
-        sense.clear()
-        sense.show_message(apps[i].name, text_colour = (255, 0, 0))
+    sense.clear()
+    sense.show_message(apps[i].name, text_colour = (0, 0, 255))
 
